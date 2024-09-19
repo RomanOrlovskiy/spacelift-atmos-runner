@@ -1,4 +1,4 @@
-export TARGET_DOCKER_REGISTRY=public.ecr.aws/u2a6f7v1
+export TARGET_DOCKER_REGISTRY=116973830621.dkr.ecr.us-east-1.amazonaws.com
 export IMAGE_NAME ?= spacelift-atmos-runner
 export DOCKER_IMAGE ?= $(IMAGE_NAME)
 export ECR_URI ?= $(TARGET_DOCKER_REGISTRY)/$(IMAGE_NAME)

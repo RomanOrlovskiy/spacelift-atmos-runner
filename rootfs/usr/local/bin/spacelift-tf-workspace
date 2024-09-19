@@ -7,6 +7,13 @@ echo "Selecting workspace..."
 echo "...with AWS_PROFILE=$AWS_PROFILE"
 echo "...with AWS_CONFIG_FILE=$AWS_CONFIG_FILE"
 
+mkdir /etc/aws-config
+echo """[profile $AWS_PROFILE]
+role_arn = arn:aws:iam::348402311652:role/acme-core-gbl-identity-spacelift
+credential_source = Ec2InstanceMetadata
+region = us-east-1
+output = json""" > $AWS_CONFIG_FILE
+
 atmos terraform workspace "$ATMOS_COMPONENT" --stack="$ATMOS_STACK"
 
 # Remove -x for security
