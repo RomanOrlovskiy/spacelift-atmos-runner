@@ -10,9 +10,13 @@ mkdir -p /usr/local/etc/atmos
 test -f /mnt/workspace/source/rootfs/usr/local/etc/atmos/atmos.yaml && ln -sfTv /mnt/workspace/source/rootfs/usr/local/etc/atmos/atmos.yaml /usr/local/etc/atmos/atmos.yaml
 test -f /mnt/workspace/source/atmos.yaml && ln -sfTv /mnt/workspace/source/atmos.yaml /usr/local/etc/atmos/atmos.yaml
 
-echo "Using OpenTofu: "
-which tofu
-tofu version
+# echo "Using OpenTofu: "
+# which tofu
+# tofu version
+
+echo "Using Terraform: "
+which terraform
+terraform --version
 
 # Remove -x for security
 set -e +x

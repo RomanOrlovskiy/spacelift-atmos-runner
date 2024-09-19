@@ -1,4 +1,4 @@
-export TARGET_DOCKER_REGISTRY=public.ecr.aws/masterpoint
+export TARGET_DOCKER_REGISTRY=public.ecr.aws/u2a6f7v1
 export IMAGE_NAME ?= spacelift-atmos-runner
 export DOCKER_IMAGE ?= $(IMAGE_NAME)
 export ECR_URI ?= $(TARGET_DOCKER_REGISTRY)/$(IMAGE_NAME)
@@ -20,7 +20,7 @@ all: build install run
 
 ## Build and tag our atmos image
 build:
-	@DOCKER_IMAGE_NAME=$(DOCKER_IMAGE) DOCKER=$(DOCKER) DOCKER_BUILD_FLAGS="--no-cache" make docker/build
+	@DOCKER_IMAGE_NAME=$(DOCKER_IMAGE) DOCKER=$(DOCKER) DOCKER_BUILD_FLAGS="--no-cache --platform linux/amd64" make docker/build
 	@export VERSION=$(shell git rev-parse --short HEAD); \
 		$(DOCKER) tag $(DOCKER_IMAGE_NAME) $(ECR_URI):latest; \
 		$(DOCKER) tag $(DOCKER_IMAGE_NAME) $(ECR_URI):$$VERSION; \
